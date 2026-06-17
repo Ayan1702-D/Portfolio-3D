@@ -23,6 +23,7 @@ function NeuralNetwork() {
     const positionsArray = new Float32Array(particleCount * 3);
     const vectors: THREE.Vector3[] = [];
 
+    // eslint-disable-next-line react-hooks/purity
     for (let i = 0; i < particleCount; i++) {
       const x = (Math.random() - 0.5) * 18;
       const y = (Math.random() - 0.5) * 18;
