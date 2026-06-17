@@ -20,7 +20,7 @@ jobs:
         cache: 'npm'
 
     - name: Install Dependencies
-      run: npm ci
+      run: npm ci --legacy-peer-deps
 
     - name: Run ESLint
       run: npm run lint
@@ -28,6 +28,7 @@ jobs:
     - name: Build Application
       run: npm run build
       env:
+      
         # Mock env vars for the build process
         NEXT_PUBLIC_APP_URL: http://localhost:3000
         RESEND_API_KEY: testing_key
