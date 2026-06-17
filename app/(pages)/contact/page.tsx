@@ -146,7 +146,7 @@ export default function Contact() {
           <p className="text-sm font-semibold tracking-[0.3em] uppercase text-blue-400 mb-3">Get In Touch</p>
           <h1 className="text-5xl font-bold mb-6">Let&apos;s Connect.</h1>
           <p className="text-neutral-400 text-lg leading-relaxed max-w-md">
-            Whether you're discussing an AI role, a collaborative deep learning project, or just want to say hi — my inbox is open.
+            Whether you&apos;re discussing an AI role, a collaborative deep learning project, or just want to say hi — my inbox is open.
           </p>
         </div>
 

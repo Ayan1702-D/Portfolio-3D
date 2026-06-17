@@ -205,7 +205,7 @@ export default function Navbar() {
         )}
         style={{ transform: "translateY(-100%)", opacity: 0 }}
       >
-        {NAVIGATION.map((item, i) => (
+        {NAVIGATION.map((item) => (
           <Link
             key={item.name}
             href={item.path}

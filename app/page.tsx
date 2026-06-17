@@ -18,19 +18,20 @@ function NeuralNetwork() {
   const linesRef = useRef<THREE.LineSegments>(null);
 
   const { positions, linePositions } = useMemo(() => {
-    const particleCount = 400; // Was 2000 — caused multi-second freeze on mount
-    const maxDistance = 2.5;
+    const particleCount = 2000;
+    const maxDistance = 1.5; 
     const positionsArray = new Float32Array(particleCount * 3);
     const vectors: THREE.Vector3[] = [];
 
-    // eslint-disable-next-line react-hooks/purity
     for (let i = 0; i < particleCount; i++) {
-      const x = (Math.random() - 0.5) * 18;
-      const y = (Math.random() - 0.5) * 18;
-      const z = (Math.random() - 0.5) * 18;
+      const x = (Math.random() - 0.5) * 20;
+      const y = (Math.random() - 0.5) * 20;
+      const z = (Math.random() - 0.5) * 20;
+
       positionsArray[i * 3] = x;
       positionsArray[i * 3 + 1] = y;
       positionsArray[i * 3 + 2] = z;
+
       vectors.push(new THREE.Vector3(x, y, z));
     }
 
