@@ -6,6 +6,7 @@ import Navbar from "@/components/layout/Navbar";
 import CustomCursor from "@/components/ui/CustomCursor";
 import PageTransition from "@/components/animations/PageTransition";
 import { Providers } from "./providers";
+import { Analytics } from "@vercel/analytics/next";
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 export const metadata: Metadata = {
   title: {
@@ -44,6 +45,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </PageTransition>
           </main>
         </Providers>
+        <Analytics />
       </body>
     </html>
   );
