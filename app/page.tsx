@@ -6,7 +6,8 @@ import * as THREE from "three";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Stars } from "@react-three/drei";
 import gsap from "gsap";
-import { ArrowRight, Mail } from "lucide-react";
+import { ArrowRight, Award, Briefcase, Calendar, Code2, Download, GraduationCap, Mail, MapPin, Rocket } from "lucide-react";
+import { PERSONAL_INFO } from "@/lib/constants";
 
 // Roles defined outside component to avoid recreating array each render (fixes infinite loop)
 const ROLES = ["ML Engineer", "AI Developer", "Deep Learning Specialist"];
@@ -176,7 +177,8 @@ export default function Home() {
   }, [displayedText, isDeleting, currentRoleIndex]);
 
   return (
-    <div className="relative w-full h-screen overflow-hidden bg-black text-white">
+    <div className="bg-black text-white">
+      <section className="relative w-full min-h-[calc(100vh-5rem)] overflow-hidden bg-black text-white">
       {/* 3D Background Canvas — Suspense prevents crash if WebGL fails */}
       <div className="absolute inset-0 z-0 opacity-75">
         <Canvas
@@ -243,6 +245,15 @@ export default function Home() {
               <Mail size={16} />
               <span>Contact Me</span>
             </Link>
+
+            <a
+              href={PERSONAL_INFO.resumeUrl}
+              download
+              className="group inline-flex items-center gap-2 px-7 py-3.5 bg-blue-600 text-white font-semibold rounded-full hover:bg-blue-500 transition-all hover:scale-105 active:scale-95"
+            >
+              <Download size={16} />
+              <span>Resume</span>
+            </a>
           </div>
 
           {/* Quick stats */}
@@ -266,6 +277,71 @@ export default function Home() {
         <span className="text-xs uppercase tracking-widest mb-2 text-neutral-400">Scroll</span>
         <div className="w-[1px] h-10 bg-gradient-to-b from-white to-transparent" />
       </div>
+      </section>
+
+      <section className="border-y border-white/[0.06] bg-neutral-950/80">
+        <div className="max-w-7xl mx-auto px-6 py-7 grid grid-cols-2 lg:grid-cols-4 gap-5">
+          {[
+            { icon: Briefcase, label: "Experience", value: "ML Intern at Aurionpro" },
+            { icon: GraduationCap, label: "Degree", value: "B.E. CSE AI/ML, 2026" },
+            { icon: Code2, label: "Tools", value: "Python, PyTorch, Next.js, Docker" },
+            { icon: Rocket, label: "Deployment", value: "Vercel and Docker ready" },
+          ].map((item) => (
+            <div key={item.label} className="flex items-start gap-3">
+              <div className="mt-0.5 flex size-9 items-center justify-center rounded-lg bg-blue-500/10 text-blue-400 border border-blue-500/20">
+                <item.icon size={17} />
+              </div>
+              <div>
+                <p className="text-xs uppercase tracking-widest text-neutral-500">{item.label}</p>
+                <p className="mt-1 text-sm font-semibold text-white leading-snug">{item.value}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="max-w-7xl mx-auto px-6 py-24 grid grid-cols-1 lg:grid-cols-[0.85fr_1.15fr] gap-12 items-start">
+        <div>
+          <p className="text-sm font-semibold tracking-[0.3em] uppercase text-blue-400 mb-3">Recruiter Snapshot</p>
+          <h2 className="text-4xl sm:text-5xl font-black tracking-tight text-white mb-4">
+            Quick signal for hiring teams.
+          </h2>
+          <p className="text-neutral-400 leading-relaxed max-w-xl">
+            A focused view of what I am targeting, where I am based, and the strengths I can bring to AI/ML teams.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {[
+            { icon: Award, label: "Availability", value: PERSONAL_INFO.availability },
+            { icon: MapPin, label: "Location", value: PERSONAL_INFO.location },
+            { icon: Briefcase, label: "Target Roles", value: PERSONAL_INFO.targetRoles.join(", ") },
+            { icon: Calendar, label: "Graduation", value: PERSONAL_INFO.graduationYear },
+          ].map((item) => (
+            <div key={item.label} className="rounded-xl border border-white/[0.07] bg-neutral-900/50 p-5">
+              <div className="flex items-center gap-2 text-blue-400 mb-3">
+                <item.icon size={16} />
+                <span className="text-xs font-semibold uppercase tracking-widest">{item.label}</span>
+              </div>
+              <p className="text-white font-semibold leading-relaxed">{item.value}</p>
+            </div>
+          ))}
+
+          <div className="sm:col-span-2 rounded-xl border border-white/[0.07] bg-neutral-900/50 p-5">
+            <div className="flex items-center gap-2 text-blue-400 mb-4">
+              <Code2 size={16} />
+              <span className="text-xs font-semibold uppercase tracking-widest">Strongest Skills</span>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {PERSONAL_INFO.strongestSkills.map((skill) => (
+                <span key={skill} className="px-3 py-1.5 rounded-lg bg-blue-500/10 text-blue-300 text-sm border border-blue-500/20">
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

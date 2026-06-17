@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { Tilt } from "react-tilt";
-import { Briefcase, GraduationCap, MapPin } from "lucide-react";
+import { Award, BadgeCheck, Briefcase, GraduationCap, MapPin, Trophy } from "lucide-react";
 import * as THREE from "three";
 
 if (typeof window !== "undefined") {
@@ -15,6 +15,27 @@ if (typeof window !== "undefined") {
 }
 
 const skills = ["Python", "TensorFlow", "PyTorch", "Keras", "OpenCV", "Django", "Docker", "SQL"];
+
+const achievements = [
+  {
+    icon: Trophy,
+    title: "Machine Learning Internship",
+    issuer: "Aurionpro Solutions",
+    detail: "Worked on model development, dataset analysis, and AI solution integration in an enterprise environment.",
+  },
+  {
+    icon: BadgeCheck,
+    title: "AI/ML Engineering Track",
+    issuer: "LTCE Mumbai",
+    detail: "Focused academic path across deep learning, computer vision, NLP, databases, and software engineering.",
+  },
+  {
+    icon: Award,
+    title: "Production Deployment Practice",
+    issuer: "Docker, Vercel, GitHub",
+    detail: "Built, containerized, and deployed a modern portfolio using Next.js, React Three Fiber, and CI-ready tooling.",
+  },
+];
 
 // BUG FIX: Removed OrbitControls from SkillSphere — was conflicting with useFrame rotation causing jitter.
 // The sphere rotates smoothly via useFrame only.
@@ -197,7 +218,31 @@ export default function About() {
         </div>
       </section>
 
-      {/* SECTION 3: Timeline */}
+      {/* SECTION 3: Certifications & Achievements */}
+      <section>
+        <div className="max-w-3xl mb-10">
+          <p className="text-sm font-semibold tracking-[0.3em] uppercase text-blue-400 mb-3">Proof Points</p>
+          <h2 className="text-4xl font-bold text-white mb-4">Certifications &amp; Achievements</h2>
+          <p className="text-neutral-500 leading-relaxed">
+            A concise view of the academic, professional, and deployment milestones that support my AI/ML profile.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+          {achievements.map((item) => (
+            <div key={item.title} className="rounded-2xl border border-white/[0.07] bg-neutral-900/50 p-6 hover:border-blue-500/30 transition-colors">
+              <div className="mb-5 flex size-11 items-center justify-center rounded-xl bg-blue-500/10 text-blue-400 border border-blue-500/20">
+                <item.icon size={20} />
+              </div>
+              <h3 className="text-lg font-bold text-white mb-2">{item.title}</h3>
+              <p className="text-sm font-semibold text-blue-300 mb-3">{item.issuer}</p>
+              <p className="text-sm leading-relaxed text-neutral-400">{item.detail}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* SECTION 4: Timeline */}
       <section ref={timelineRef} className="relative grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-16">
         <div className="lg:sticky lg:top-32 h-fit">
           <p className="text-sm font-semibold tracking-[0.3em] uppercase text-blue-400 mb-3">Experience</p>

@@ -87,7 +87,7 @@ import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { NAVIGATION, PERSONAL_INFO } from "@/lib/constants";
-import { Menu, X } from "lucide-react";
+import { Download, Menu, X } from "lucide-react";
 import gsap from "gsap";
 import clsx from "clsx";
 
@@ -178,6 +178,14 @@ export default function Navbar() {
 
           {/* CTA + Mobile Toggle */}
           <div className="flex items-center gap-3">
+            <a
+              href={PERSONAL_INFO.resumeUrl}
+              download
+              className="hidden md:inline-flex items-center gap-2 px-4 py-2 bg-white/10 hover:bg-white/15 border border-white/10 text-white text-sm font-semibold rounded-full transition-colors"
+            >
+              <Download size={14} />
+              Resume
+            </a>
             <Link
               href="/contact"
               className="hidden md:inline-flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white text-sm font-semibold rounded-full transition-colors"
@@ -225,6 +233,15 @@ export default function Navbar() {
         >
           Hire Me
         </Link>
+        <a
+          href={PERSONAL_INFO.resumeUrl}
+          download
+          onClick={() => setIsOpen(false)}
+          className="inline-flex items-center gap-2 px-8 py-3 bg-white/10 border border-white/10 text-white font-semibold rounded-full text-lg"
+        >
+          <Download size={18} />
+          Resume
+        </a>
       </div>
     </>
   );
