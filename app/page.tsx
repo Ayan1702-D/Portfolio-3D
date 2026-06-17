@@ -11,6 +11,10 @@ import { ArrowRight, Mail } from "lucide-react";
 // Roles defined outside component to avoid recreating array each render (fixes infinite loop)
 const ROLES = ["ML Engineer", "AI Developer", "Deep Learning Specialist"];
 
+function seededRandom(seed: number) {
+  const x = Math.sin(seed) * 10000;
+  return x - Math.floor(x);
+}
 // --- 3D Neural Network Component ---
 // BUG FIX: Reduced particle count from 2000 to 400 (O(n²) was 4M iterations = JS thread freeze = black screen)
 function NeuralNetwork() {
@@ -24,16 +28,16 @@ function NeuralNetwork() {
     const vectors: THREE.Vector3[] = [];
 
     for (let i = 0; i < particleCount; i++) {
-      const x = (Math.random() - 0.5) * 20;
-      const y = (Math.random() - 0.5) * 20;
-      const z = (Math.random() - 0.5) * 20;
+      const x = (seededRandom(i * 3 + 1) - 0.5) * 20;
+      const y = (seededRandom(i * 3 + 2) - 0.5) * 20;
+      const z = (seededRandom(i * 3 + 3) - 0.5) * 20;
 
       positionsArray[i * 3] = x;
       positionsArray[i * 3 + 1] = y;
       positionsArray[i * 3 + 2] = z;
 
       vectors.push(new THREE.Vector3(x, y, z));
-    }
+   }
 
     const linesArray: number[] = [];
     for (let i = 0; i < particleCount; i++) {

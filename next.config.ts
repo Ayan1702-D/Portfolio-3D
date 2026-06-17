@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import type { NextConfig } from "next";
 // Drop the strict import type for now to bypass the type error
-const nextConfig: any = {
+const nextConfig: NextConfig = {
   reactStrictMode: true,
   output: "standalone", 
   images: {
