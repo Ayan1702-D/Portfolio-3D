@@ -23,7 +23,7 @@ function NeuralNetwork() {
   const linesRef = useRef<THREE.LineSegments>(null);
 
   const { positions, linePositions } = useMemo(() => {
-    const particleCount = 2000;
+    const particleCount = 400;
     const maxDistance = 1.5; 
     const positionsArray = new Float32Array(particleCount * 3);
     const vectors: THREE.Vector3[] = [];

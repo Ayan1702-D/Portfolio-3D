@@ -24,28 +24,6 @@
 
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
-import { usePathname } from "next/navigation";
-
-// BUG FIX: Reduced transition duration and simplified animation.
-// The previous exit/enter sequence with y offsets caused a visible black gap
-// between pages (old page exits down, new page hasn't mounted yet = black frame).
-// Using opacity-only fade is imperceptible but removes the black screen.
 export default function PageTransition({ children }: { children: React.ReactNode }) {
-  const pathname = usePathname();
-
-  return (
-    <AnimatePresence mode="wait" initial={false}>
-      <motion.div
-        key={pathname}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: 0.2, ease: "easeInOut" }}
-        className="w-full flex-grow flex flex-col"
-      >
-        {children}
-      </motion.div>
-    </AnimatePresence>
-  );
+  return <div className="w-full flex-grow flex flex-col">{children}</div>;
 }
