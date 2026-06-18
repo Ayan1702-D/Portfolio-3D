@@ -1,4 +1,5 @@
 export const PERSONAL_INFO = {
+  title: "Portfolio",
   name: "Ayan",
   fullName: "Ayan Pathak", 
   role: "AI/ML Engineer",

@@ -151,7 +151,7 @@ export default function Navbar() {
             href="/"
             className="text-xl font-black tracking-tighter text-white group"
           >
-            {PERSONAL_INFO.name}
+            {PERSONAL_INFO.title}
             <span className="text-blue-500 group-hover:text-blue-400 transition-colors">.</span>
           </Link>
 

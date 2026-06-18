@@ -10,7 +10,7 @@ import { ArrowRight, Award, Briefcase, Calendar, Code2, Download, GraduationCap,
 import { PERSONAL_INFO } from "@/lib/constants";
 
 // Roles defined outside component to avoid recreating array each render (fixes infinite loop)
-const ROLES = ["ML Engineer", "AI Developer", "Deep Learning Specialist"];
+const ROLES = ["ML Engineer", "AI Developer", "Data Scientist"];
 
 function seededRandom(seed: number) {
   const x = Math.sin(seed) * 10000;
@@ -221,7 +221,7 @@ export default function Home() {
 
           <div className="h-10 sm:h-14 flex items-center justify-center sm:justify-start mb-10 mt-4">
             <p className="text-xl sm:text-3xl font-light text-neutral-400">
-              I build{" "}
+              I&apos;m{" "}
               <span className="font-semibold text-white">
                 {displayedText}
               </span>
@@ -283,7 +283,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-6 py-7 grid grid-cols-2 lg:grid-cols-4 gap-5">
           {[
             { icon: Briefcase, label: "Experience", value: "ML Intern at Aurionpro" },
-            { icon: GraduationCap, label: "Degree", value: "B.E. CSE AI/ML, 2026" },
+            { icon: GraduationCap, label: "Degree", value: "B.E. CSE AI/ML, 2027" },
             { icon: Code2, label: "Tools", value: "Python, PyTorch, Next.js, Docker" },
             { icon: Rocket, label: "Deployment", value: "Vercel and Docker ready" },
           ].map((item) => (
