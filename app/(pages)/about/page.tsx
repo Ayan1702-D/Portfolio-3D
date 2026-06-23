@@ -113,7 +113,7 @@ const timeline = [
     icon: GraduationCap,
     color: "text-neutral-400",
     dotColor: "border-neutral-500",
-    period: "2022 — 2026",
+    period: "2022 — 2027",
     title: "B.E. Computer Science (AI/ML)",
     company: "LTCE Mumbai",
     description: "Specializing in deep learning, computer vision, and NLP systems.",

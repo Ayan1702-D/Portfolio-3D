@@ -9,7 +9,6 @@ export interface Project {
   githubUrl: string;
   demoUrl: string;
   image: string;
-  youtubeId?: string; // For the modal embed
 }
 export const PROJECTS: Project[] = [
   {
@@ -22,7 +21,6 @@ export const PROJECTS: Project[] = [
     githubUrl: "https://github.com/pytorch/vision", // Placeholder for actual fetch
     demoUrl: "https://demo.com",
     image: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?q=80&w=800&auto=format&fit=crop",
-    youtubeId: "dQw4w9WgXcQ", 
   },
   {
     id: "2",
