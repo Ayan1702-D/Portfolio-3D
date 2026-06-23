@@ -8,9 +8,30 @@ import { Stars } from "@react-three/drei";
 import gsap from "gsap";
 import { ArrowRight, Award, Briefcase, Calendar, Code2, Download, GraduationCap, Mail, MapPin, Rocket } from "lucide-react";
 import { PERSONAL_INFO } from "@/lib/constants";
+import { PROJECTS } from "@/data/projects";
 
 // Roles defined outside component to avoid recreating array each render (fixes infinite loop)
 const ROLES = ["ML Engineer", "AI Developer", "Data Scientist"];
+
+const focusAreas = [
+  {
+    icon: Code2,
+    title: "Model Engineering",
+    text: "Training, evaluation, and iteration across deep learning, NLP, and computer vision workflows.",
+  },
+  {
+    icon: Rocket,
+    title: "Product Delivery",
+    text: "Turning experiments into usable apps with clean interfaces, APIs, Docker, and deployment-ready structure.",
+  },
+  {
+    icon: Briefcase,
+    title: "Team Fit",
+    text: "Comfortable moving between research notes, implementation details, and practical business constraints.",
+  },
+];
+
+const featuredProjects = PROJECTS.slice(0, 3);
 
 function seededRandom(seed: number) {
   const x = Math.sin(seed) * 10000;
@@ -340,6 +361,69 @@ export default function Home() {
               ))}
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className="border-y border-white/[0.06] bg-neutral-950">
+        <div className="max-w-7xl mx-auto px-6 py-20 grid grid-cols-1 lg:grid-cols-[0.8fr_1.2fr] gap-12 items-start">
+          <div>
+            <p className="text-sm font-semibold tracking-[0.3em] uppercase text-blue-400 mb-3">Build Direction</p>
+            <h2 className="text-4xl sm:text-5xl font-black tracking-tight text-white mb-4">
+              Useful AI, shipped cleanly.
+            </h2>
+            <p className="text-neutral-400 leading-relaxed max-w-xl">
+              I like projects where model quality, software reliability, and interface clarity all matter at the same time.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {focusAreas.map((area) => (
+              <div key={area.title} className="rounded-xl border border-white/[0.07] bg-black/40 p-5">
+                <div className="mb-5 flex size-10 items-center justify-center rounded-lg bg-blue-500/10 text-blue-400 border border-blue-500/20">
+                  <area.icon size={18} />
+                </div>
+                <h3 className="text-white font-bold mb-2">{area.title}</h3>
+                <p className="text-sm text-neutral-400 leading-relaxed">{area.text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="max-w-7xl mx-auto px-6 py-24">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
+          <div>
+            <p className="text-sm font-semibold tracking-[0.3em] uppercase text-blue-400 mb-3">Featured Work</p>
+            <h2 className="text-4xl sm:text-5xl font-black tracking-tight text-white">Selected project signals.</h2>
+          </div>
+          <Link href="/projects" className="inline-flex items-center gap-2 text-sm font-semibold text-blue-300 hover:text-blue-200 transition-colors">
+            View all projects
+            <ArrowRight size={16} />
+          </Link>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+          {featuredProjects.map((project) => (
+            <Link
+              key={project.id}
+              href="/projects"
+              className="group rounded-xl border border-white/[0.07] bg-neutral-900/50 p-5 transition-colors hover:border-blue-500/40"
+            >
+              <div className="flex items-center justify-between gap-3 mb-5">
+                <span className="text-xs font-semibold uppercase tracking-widest text-blue-300">{project.category}</span>
+                <ArrowRight size={16} className="text-neutral-600 transition-transform group-hover:translate-x-1 group-hover:text-blue-300" />
+              </div>
+              <h3 className="text-lg font-bold text-white mb-2">{project.title}</h3>
+              <p className="text-sm text-neutral-400 leading-relaxed mb-5">{project.description}</p>
+              <div className="flex flex-wrap gap-1.5">
+                {project.techStack.slice(0, 3).map((tech) => (
+                  <span key={tech} className="px-2 py-1 rounded-md bg-blue-500/10 text-blue-300 text-xs border border-blue-500/20">
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </Link>
+          ))}
         </div>
       </section>
     </div>
