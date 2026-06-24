@@ -19,7 +19,7 @@ import {
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
-const CATEGORIES: ProjectCategory[] = ["All", "NLP", "Computer Vision", "Agentic AI", "Web"];
+const CATEGORIES: ProjectCategory[] = ["All", "NLP", "Computer Vision", "Agentic AI", "Web", "Machine Learning", "Deep Learning"];
 
 function ProjectCard({ project }: { project: Project }) {
   const repoPath = project.githubUrl.replace("https://github.com/", "");

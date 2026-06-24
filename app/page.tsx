@@ -259,6 +259,14 @@ export default function Home() {
               <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
             </Link>
 
+          <Link
+              href="/certificates"
+              className="group relative inline-flex items-center gap-2 px-7 py-3.5 bg-white text-black font-semibold rounded-full overflow-hidden transition-all hover:scale-105 active:scale-95 hover:shadow-[0_0_30px_rgba(255,255,255,0.3)]"
+            >
+              <span>View Certificates</span>
+              <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+            </Link>
+
             <Link
               href="/contact"
               className="group inline-flex items-center gap-2 px-7 py-3.5 bg-transparent border border-white/20 text-white font-semibold rounded-full hover:bg-white/10 hover:border-white/40 transition-all"
@@ -282,6 +290,7 @@ export default function Home() {
             {[
               { value: "3+", label: "Years Learning" },
               { value: "6+", label: "Projects Built" },
+              { value: "4+", label: "Certifications" },
               { value: "1", label: "Internship" },
             ].map((stat) => (
               <div key={stat.label} className="text-center sm:text-left">

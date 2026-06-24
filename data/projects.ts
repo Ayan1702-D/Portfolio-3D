@@ -1,4 +1,4 @@
-export type ProjectCategory = "All" | "NLP" | "Computer Vision" | "Agentic AI" | "Web";
+export type ProjectCategory = "All" | "NLP" | "Computer Vision" | "Agentic AI" | "Web" | "Machine Learning" | "Deep Learning";
 export type ProjectStatus = "live" | "wip" | "archived";
 
 export interface Project {
@@ -25,7 +25,7 @@ export const PROJECTS: Project[] = [
       "Developed a high-performance real-time safety system using Python, OpenCV, and Dlib. Implements Eye Aspect Ratio (EAR) and Mouth Aspect Ratio (MAR) metrics combined with 3D Head Pose Estimation (SolvePnP) to detect drowsiness, yawning, and distraction. Features PERCLOS-based fatigue assessment over a 300-frame sliding window — an industry-standard metric — and CLAHE image enhancement for robust performance in low-light cabin environments. Multi-threaded async audio alerts prevent video feed freezes.",
     category: "Computer Vision",
     techStack: ["Python", "OpenCV", "Dlib", "NumPy", "Threading"],
-    githubUrl: "https://github.com/Ayan1702-D/Driver-DMS",
+    githubUrl: "https://github.com/Ayan1702-D/Driver-Drowsiness-Monitoring",
     demoUrl: "",
     image:
       "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?q=80&w=800&auto=format&fit=crop",
@@ -40,7 +40,7 @@ export const PROJECTS: Project[] = [
       "Custom-trained YOLOv8 model optimized with TFLite (FP16/FP32) and ONNX formats achieving 30+ FPS on CPU. Uses Centroid Tracking with 5-frame Temporal Stability to count unique potholes without duplication. Integrates GPS coordinate logging and generates an interactive road_audit_map.html with markers. Outputs a structured road_audit_report.csv for infrastructure teams.",
     category: "Computer Vision",
     techStack: ["Python", "YOLOv8", "TensorFlow Lite", "OpenCV", "Folium"],
-    githubUrl: "https://github.com/Ayan1702-D/Pothole-Detection-System",
+    githubUrl: "https://github.com/Ayan1702-D/-Pothole-Detection-System",
     demoUrl: "",
     image:
       "https://images.unsplash.com/photo-1515162816999-a0c47dc192f7?q=80&w=800&auto=format&fit=crop",
@@ -53,9 +53,9 @@ export const PROJECTS: Project[] = [
       "Automated risk assessment platform processing 30M+ loan records using Isolation Forest anomaly detection.",
     fullDetails:
       "Built during my internship at Aurionpro Solutions. Processes over 30 million LendingClub loan records using Scikit-Learn's Isolation Forest across 20+ financial features (DTI, FICO, Revolving Utility). Detected $467.2M in high-risk loan volume during validation with a 5% anomaly flag rate. Features a human-in-the-loop Case Management Dashboard, DTI Hard-Rule Override (forcing Critical status on DTI > 100%), automated batch ingestion pipeline, and a permanent audit log for regulatory compliance. Applied categorical encoding to cut memory footprint by 80%.",
-    category: "Agentic AI",
+    category: "Machine Learning",
     techStack: ["Python", "Scikit-Learn", "Django", "PostgreSQL", "Pandas"],
-    githubUrl: "https://github.com/Ayan1702-D/RAMS-LendingClub",
+    githubUrl: "https://github.com/Ayan1702-D/RAMS_Risk-and-Anomaly-Management-System",
     demoUrl: "",
     image:
       "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=800&auto=format&fit=crop",
@@ -83,9 +83,9 @@ export const PROJECTS: Project[] = [
       "LSTM-based time-series forecasting model for predicting future energy usage patterns and peak-load optimization.",
     fullDetails:
       "Built a deep learning forecasting pipeline using LSTM networks to model temporal energy consumption patterns. Enables peak-load optimization and energy efficiency analysis, providing actionable insights for resource management. The pipeline covers data preprocessing, sequence generation, model training, and multi-step ahead prediction with evaluation metrics for operational deployment.",
-    category: "NLP",
+    category: "Deep Learning",
     techStack: ["Python", "TensorFlow", "Keras", "Pandas", "Matplotlib"],
-    githubUrl: "https://github.com/Ayan1702-D/Energy-Consumption-Prediction",
+    githubUrl: "https://github.com/Ayan1702-D/Energy-consumption-prediction-",
     demoUrl: "",
     image:
       "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?q=80&w=800&auto=format&fit=crop",
