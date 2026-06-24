@@ -9,6 +9,7 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 import { Tilt } from "react-tilt";
 import { Award, BadgeCheck, Briefcase, GraduationCap, MapPin, Trophy } from "lucide-react";
 import * as THREE from "three";
+import { SKILL_BARS } from "@/lib/constants"
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -56,6 +57,23 @@ function SkillSphere() {
     }
     return positions;
   }, []);
+
+  function DotIndicator({ level }: { level: number }) {
+  // 5 dots; each dot represents 20 points of the 0-100 scale.
+  const filled = Math.round(level / 20);
+  return (
+    <div className="flex items-center gap-1" aria-label={`${level} out of 100`}>
+      {Array.from({ length: 5 }).map((_, i) => (
+        <span
+          key={i}
+          className={`w-2 h-2 rounded-full transition-colors ${
+            i < filled ? "bg-blue-400" : "bg-neutral-700"
+          }`}
+        />
+      ))}
+    </div>
+  );
+}
 
   useFrame((_, delta) => {
     if (groupRef.current) {
@@ -173,6 +191,7 @@ export default function About() {
       </section>
 
       {/* SECTION 2: Skills */}
+      
       <section className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         {/* 3D Skill Sphere — Suspense required for Html from drei */}
         <div className="h-[420px] w-full relative rounded-2xl bg-neutral-900/20 border border-white/[0.06] overflow-hidden">
@@ -187,6 +206,7 @@ export default function About() {
             Skills at a glance
           </div>
         </div>
+        
 
         {/* Skill Bars */}
         <div className="flex flex-col gap-6">
