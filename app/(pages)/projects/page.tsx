@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import useSWR from "swr";
 import { ExternalLink, Star, PlayCircle, ArrowUpRight } from "lucide-react";
 import { SiGithub } from "react-icons/si";
+import { track } from "@vercel/analytics";
 import { PROJECTS, ProjectCategory, Project } from "@/data/projects";
 import {
   Dialog,
@@ -13,6 +14,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
+  DialogDescription,
 } from "@/components/ui/dialog";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
@@ -170,6 +172,11 @@ function ProjectCard({ project }: { project: Project }) {
             </span>
             <StatusBadge status={project.status} />
           </DialogTitle>
+          
+          {/* Added DialogDescription with sr-only to hide it visually but fix the warning */}
+          <DialogDescription className="sr-only">
+            View full details, demo links, and the technology stack for the {project.title} project.
+          </DialogDescription>
         </DialogHeader>
 
         <div className="mt-4 flex flex-col gap-5">
@@ -185,7 +192,7 @@ function ProjectCard({ project }: { project: Project }) {
             </div>
           ) : (
             <div className="relative w-full aspect-video rounded-xl overflow-hidden border border-neutral-800">
-              <Image src={project.image} alt={project.title} fill className="object-cover opacity-50" />
+              <Image src={project.image} alt={project.title} fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" priority className="object-cover opacity-50" />
               <div className="absolute inset-0 flex flex-col items-center justify-center gap-2">
                 <PlayCircle size={40} className="text-neutral-500" />
                 <span className="text-sm text-neutral-500">Demo coming soon</span>
@@ -261,7 +268,11 @@ export default function Projects() {
           {CATEGORIES.map((category) => (
             <button
               key={category}
-              onClick={() => setActiveCategory(category)}
+              onClick={() => {
+                setActiveCategory(category);
+                // Track which project categories recruiters are most interested in.
+                track("project_filter", { category });
+              }}
               className={`px-5 py-2 rounded-full text-sm font-semibold transition-all ${
                 activeCategory === category
                   ? "bg-white text-black shadow-[0_0_20px_rgba(255,255,255,0.15)]"

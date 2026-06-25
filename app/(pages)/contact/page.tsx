@@ -8,9 +8,8 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { motion } from "framer-motion";
-// UPDATED: Removed Github and Linkedin from lucide-react
 import { Send, MapPin, Loader2, Mail } from "lucide-react";
-// UPDATED: Imported Github and Linkedin from react-icons
+import { track } from "@vercel/analytics";
 import { SiGithub } from "react-icons/si"; 
 import { FaLinkedin } from "react-icons/fa";
 import { toast } from "sonner";
@@ -116,26 +115,32 @@ export default function Contact() {
   } = useForm<FormData>({ resolver: zodResolver(formSchema) });
 
   // BUG FIX: `catch (error)` — typed properly to avoid TypeScript strict error
-  const onSubmit = async (data: FormData) => {
-    setIsSubmitting(true);
-    try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
-
-      if (!response.ok) throw new Error("Failed to send");
-
-      toast.success("Message sent! I'll get back to you soon.");
-      reset();
-    } catch (err: unknown) {
-      const message = err instanceof Error ? err.message : "Something went wrong. Please try again.";
-      toast.error(message);
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
+  const onSubmit = async (data: { name: string; email: string; message: string }) => {
+  setIsSubmitting(true);
+  try {
+    const response = await fetch("/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
+ 
+    if (!response.ok) throw new Error("Failed to send");
+ 
+    toast.success("Message sent! I'll get back to you soon.");
+ 
+    // Track successful form submissions so we can see in the Vercel
+    // Analytics dashboard how many recruiters actually reached out.
+    track("contact_form_submitted");
+ 
+    reset();
+  } catch (err: unknown) {
+    const message =
+      err instanceof Error ? err.message : "Something went wrong. Please try again.";
+    toast.error(message);
+  } finally {
+    setIsSubmitting(false);
+  }
+};
 
   return (
     <div className="min-h-screen pt-32 pb-24 px-6 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
