@@ -137,6 +137,7 @@ function AnimatedStat({
 
   useEffect(() => {
     if (!inView || reducedMotion || !isNumeric) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setDisplayed(num);
       return;
     }
@@ -170,6 +171,7 @@ function HeroStats() {
   const [reducedMotion, setReducedMotion] = useState(false);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setReducedMotion(
       window.matchMedia("(prefers-reduced-motion: reduce)").matches
     );
