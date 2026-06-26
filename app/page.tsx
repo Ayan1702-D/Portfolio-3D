@@ -312,7 +312,7 @@ export default function Home() {
               </Link>
 
               <Link
-                href="/Certifications"
+                href="/Certificates"
                 className="group relative inline-flex items-center gap-2 px-7 py-3.5 bg-blue-900/20 text-blue-100 font-semibold rounded-full border border-blue-500/30 backdrop-blur-md overflow-hidden transition-all hover:scale-105 active:scale-95 hover:bg-blue-900/40 hover:shadow-[0_0_30px_rgba(59,130,246,0.2)]"
               >
                 <span>View Certificates</span>
