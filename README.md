@@ -9,7 +9,7 @@
 
 A production-ready, interactive portfolio for Ayan Pathak — AI/ML engineering student at LTCE Mumbai (graduating 2027). Built with Next.js 15 App Router, React Three Fiber, Framer Motion, and GSAP. Features a 3D neural network hero, animated skill sphere, interactive globe on the contact page, and a full contact pipeline via Resend.
 
-**Live URL:** _Add your Vercel deployment URL here_
+**Live URL:** https://portfolio-3d-lyart-two.vercel.app/
 
 ---
 
